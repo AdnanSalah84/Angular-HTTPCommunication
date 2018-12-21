@@ -36,13 +36,18 @@ export class DataService {
   }
 
   getBookById(id: number): Observable<Book> {
+    // let getHeaders: HttpHeaders = new HttpHeaders({
+    //   'Accept': 'application/json',
+    //   'Authorization': 'my-token'
+    // });
+
     return this.http.get<Book>(`/api/books/${id}`, {
       headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Authorization': 'my-token'
+           'Accept': 'application/json',
+           'Authorization': 'my-token'
       })
     });
-  }  
+  }
 
   getOldBookById(id: number): Observable<OldBook> {
     return this.http.get<Book>(`/api/books/${id}`)
@@ -74,5 +79,5 @@ export class DataService {
   deleteBook(bookID: number): Observable<void> {
     return this.http.delete<void>(`/api/books/${bookID}`);
   }
-  
+
 }
